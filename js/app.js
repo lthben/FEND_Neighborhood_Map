@@ -9,7 +9,7 @@ function initMap() { //download map and all markers
 		zoom: 15, 
 	});
 
-	var infoWindow = new google.maps.InfoWindow();
+	var infoWindow = new google.maps.InfoWindow({maxWidth:200});
 	var bounds = new google.maps.LatLngBounds();
 
 	/*To get geocode (replace with address to get latlon of place):-
@@ -136,14 +136,7 @@ function initMap() { //download map and all markers
 
 		if (selected == '0') { //show all since unfiltered
 
-
 			resetToStartingState(infoWindow); 
-/*
-			infoWindow.close();
-			showListings(markers);
-			// displayedMarkers = markers;
-			$('#select-loc').find('option').remove().end().append('<option value="0">Asian Civilisations Museum</option><option value="1">Art Science Museum</option><option value="2">Chinatown</option><option value="3">Clarke Quay</option><option value="4">Esplanade - Theatres by the Bay</option><option value="5">Fort Canning Park</option><option value="6">Gardens by the Bay</option><option value="7">Hai Di Lao Hotpot</option><option value="8">Jumbo Seafood</option><option value="9">Marina Bay Sands</option><option value="10">National Gallery</option><option value="11">National Museum</option><option value="12">Telok Ayer Street</option><option value="13">Victoria Concert Hall</option>');
-			*/
 			
 		} else {
 
@@ -203,18 +196,23 @@ function initMap() { //download map and all markers
 	//for the show and hide all buttons
 	document.getElementById('show-listings').addEventListener('click', function() {
 
-		catSelector.value = '0';
-		resetToStartingState(infoWindow);
+		infoWindow.close();
+		catSelector.value = '0'; 
+		resetToStartingState();
+		$('#select-cat').show();
+		$('#select-loc').show();
 	});
 
 	document.getElementById('hide-listings').addEventListener('click', function() {
+		infoWindow.close();
 		hideMarkers(markers);
+		$('#select-cat').hide();
+		$('#select-loc').hide();
 	});
 }
 
-function resetToStartingState(infowindow) {
+function resetToStartingState() {
 	
-	infowindow.close();
 	showListings(markers);
 		
 	$('#select-loc').find('option').remove().end().append('<option value="0">Asian Civilisations Museum</option><option value="1">Art Science Museum</option><option value="2">Chinatown</option><option value="3">Clarke Quay</option><option value="4">Esplanade - Theatres by the Bay</option><option value="5">Fort Canning Park</option><option value="6">Gardens by the Bay</option><option value="7">Hai Di Lao Hotpot</option><option value="8">Jumbo Seafood</option><option value="9">Marina Bay Sands</option><option value="10">National Gallery</option><option value="11">National Museum</option><option value="12">Telok Ayer Street</option><option value="13">Victoria Concert Hall</option>');
@@ -249,7 +247,7 @@ function populateInfoWindow(marker, infowindow) {
 				if (response[3].length > 0) {
 					var myWikiURL = response[3][0];
 				}
-				infowindow.setContent('<div>' + marker.title + '</div>' + '<p>' + myExtract + '</p>' + '<div>' + '<img src="' + marker.imageURL + '" alt="' + marker.title + '" style="height:100px">' + '</div>' + '<a href=' + myWikiURL + '>' + 'wikipedia' + '</a>');
+				infowindow.setContent('<div>' + marker.title + '</div>' + '<p>' + myExtract + '</p>' + '<div>' + '<img src="' + marker.imageURL + '" alt="' + marker.title + '" style="height:150px">' + '</div>' + '<a href=' + myWikiURL + '>' + 'wikipedia' + '</a>');
 				infowindow.open(map, marker);
 
 				clearTimeout(wikiRequestTimeout);
@@ -281,13 +279,6 @@ function bounceMarker(marker, markers) {
 		}
 	});
 }
-
-// function clearMarkerSelection() { //deactivate any existing selected markers
-// 	markers.forEach(function(element) {
-// 		element.setAnimation(null);
-// 	});
-// 	infowindow.marker = null;
-// }
 
 // This function will loop through the markers array and display them all.
 function showListings(markers) {
