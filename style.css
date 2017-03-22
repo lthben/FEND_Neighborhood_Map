@@ -33,7 +33,11 @@ html, body {
     width: 48%;
 }
 
-#select-loc {
+#select-cat {
 	border: hidden;
+}
+
+#select-loc {
+	border: none;
 }
 

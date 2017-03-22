@@ -10,36 +10,24 @@
 		<div class="options-box">
 			<h2>Touring Singapore's Downtown Area</h2>
 			<p>Recommendations on places to visit from a local Singaporean.</p>
-			<input id="show-listings" type="button" value="Show All">
-          	<input id="hide-listings" type="button" value="Hide All">
+		
+          	<button id="show-listings" data-bind="click: showAllListings">Show All</button>
+          	<button id="hide-listings" data-bind="click: hideAllListings">Hide All</button>
 			<div>
 				<div>
-					<select id="select-cat">
-						<option value="0">- select a category -</option>
-						<option value="1">Cultural Entertainment</option>
-						<option value="2">Food</option>
-						<option value="3">Museums</option>
-						<option value="4">Night Life</option>
-						<option value="5">Parks</option>
-						<option value="6">Shopping</option>
+			
+					<select id="select-cat" data-bind="value: selectedCategory"> <!--click: printSelectedCat for debugging-->
+						<option value="- select a category -">- select a category -</option>
+						<option value="Cultural Entertainment">Cultural Entertainment</option>
+						<option value="Food">Food</option>
+						<option value="Museums">Museums</option>
+						<option value="Night Life">Night Life</option>
+						<option value="Parks">Parks</option>
+						<option value="Shopping">Shopping</option>
 					</select>
 				</div>
-				<div>
-					<select size="14" id="select-loc">
-						<option value="0">Asian Civilisations Museum</option>
-						<option value="1">Art Science Museum</option>
-						<option value="2">Chinatown</option>
-						<option value="3">Clarke Quay</option>
-						<option value="4">Esplanade - Theatres by the Bay</option>
-						<option value="5">Fort Canning Park</option>
-						<option value="6">Gardens by the Bay</option>
-						<option value="7">Hai Di Lao Hotpot</option>
-						<option value="8">Jumbo Seafood</option>
-						<option value="9">Marina Bay Sands</option>
-						<option value="10">National Gallery</option>
-						<option value="11">National Museum</option>
-						<option value="12">Telok Ayer Street</option>
-						<option value="13">Victoria Concert Hall</option>
+				<div>			
+					<select id="select-loc" data-bind="options: locationList, value: selectedLocation, attr: {size: selectListSize}"> <!--click: printSelectedLoc, for debugging-->
 					</select>
 				</div>
 			</div>
@@ -49,8 +37,7 @@
 	
 	<script src="js/lib/knockout-3.4.1.js"></script>
 	<script src="js/lib/jquery-3.1.1.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBGgwQyTBh-NZLm0qAuumS9M5K1zU0Qvos&v=3&callback=initMap"></script>
 	<script src="js/app.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBGgwQyTBh-NZLm0qAuumS9M5K1zU0Qvos&v=3&callback=initMap">
-	</script>
 </body>
 </html>
