@@ -7,23 +7,25 @@ html, body {
 .container {
 	height: 100%;
 	position: relative;
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.options-box {
+#menu{
     background: #fff;
+    width: 20%;
     border: 1px solid #999;
-    border-radius: 3px;
     height: 100%;
-    line-height: 35px;
+    line-height: 30px;
     padding: 10px 10px 30px 10px;
     text-align: left;
-    width: 20%;
+    z-index: 10; /*floats on top of map*/
 }
 
 #map {
 	bottom:0px;
 	height:100%;
-	left: 21.7%;
+	left:0px;
 	right: 0px;
 	position: absolute;
 }
@@ -31,13 +33,47 @@ html, body {
 #hide-listings,
 #show-listings {
     width: 48%;
+    cursor: pointer;
 }
 
-#select-cat {
-	border: hidden;
-}
-
+#select-cat, 
 #select-loc {
-	border: none;
+	width: 100%;
+	cursor: pointer;
+}
+
+#leftToggleButton,
+#rightToggleButton {
+  position:relative;
+  margin-left: 90%;
+  cursor:pointer;
+}
+
+#mainTitle, 
+#pageDescription {
+	width:100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+button {
+	/*min size for mobile devices*/
+	min-width: 48px; 
+	min-height: 48px;
+}
+
+@media only screen and (max-width: 800px) {
+	#menu {
+		/*fixed width for menu for readability*/
+	    width: 200px;
+	}
+	#mainTitle {
+		/*smaller font size*/
+		font-size: 1em;
+	}
+	#pageDescription {
+		/*smaller font size*/
+		font-size: 0.9em;
+	}
 }
 

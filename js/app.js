@@ -47,6 +47,9 @@ The location listings:
 
 	Notes: 
 		Esplanade - Theatres on the Bay wikipedia page has a redirect. I was unable to get the redirected page so I used Esplanade Park instead. 
+
+Creating a hamburger menu: 
+	https://codepen.io/g13nn/pen/eHGEF
 **********************************************************************************************************/
 
 /*****************************
@@ -293,7 +296,6 @@ function resetToStartingState() {
 	$('#select-loc').find('option').remove().end().append('<option value="0">Asian Civilisations Museum</option><option value="1">Art Science Museum</option><option value="2">Chinatown</option><option value="3">Clarke Quay</option><option value="4">Esplanade - Theatres by the Bay</option><option value="5">Fort Canning Park</option><option value="6">Gardens by the Bay</option><option value="7">Hai Di Lao Hotpot</option><option value="8">Jumbo Seafood</option><option value="9">Marina Bay Sands</option><option value="10">National Gallery</option><option value="11">National Museum</option><option value="12">Telok Ayer Street</option><option value="13">Victoria Concert Hall</option>');
 }
 */
-
 } //closing bracket for initMap
 
 //populate the content of the infowindow with an AJAX call to wikimedia API for a short wikipedia description and link

@@ -2,17 +2,26 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<title>Neighborhood Map</title>
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<div class="container">
-		<div class="options-box">
-			<h2>Touring Singapore's Downtown Area</h2>
-			<p>Recommendations on places to visit from a local Singaporean.</p>
+
+		<div id="menu">
+
+			<div id="menubuttonheader">
+				<button id="leftToggleButton">&laquo;</button>
+				<button id="rightToggleButton">&raquo;</button>
+			</div>
+
+			<h2 id="mainTitle">Touring Singapore's Downtown Area</h2>
+			<p id="pageDescription">Recommendations on places to visit from a local Singaporean.</p>
 		
           	<button id="show-listings" data-bind="click: showAllListings">Show All</button>
           	<button id="hide-listings" data-bind="click: hideAllListings">Hide All</button>
+
 			<div>
 				<div>
 			
@@ -32,12 +41,37 @@
 				</div>
 			</div>
 		</div>
-		<div id="map"></div>
+
+		<div id="map">
+		</div>
 	</div>
-	
+
 	<script src="js/lib/knockout-3.4.1.js"></script>
 	<script src="js/lib/jquery-3.1.1.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBGgwQyTBh-NZLm0qAuumS9M5K1zU0Qvos&v=3&callback=initMap"></script>
 	<script src="js/app.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBGgwQyTBh-NZLm0qAuumS9M5K1zU0Qvos&v=3&callback=initMap"></script>
+	<script type="text/javascript">
+		$('#rightToggleButton').hide();
+
+		$('#leftToggleButton').click( function() {
+			if ($(window).width() >=800) {
+				$('#menu').animate({"margin-left": "-=18%"}, "slow");
+			} else {
+				$('#menu').animate({"margin-left": "-=195px"}, "slow");
+			}
+			$('#rightToggleButton').show();
+			$('#leftToggleButton').hide();
+		});
+
+		$('#rightToggleButton').click( function() {
+			if ($(window).width() >=800) {
+				$('#menu').animate({"margin-left": "+=18%"}, "slow");
+			} else {
+				$('#menu').animate({"margin-left": "+=195px"}, "slow");
+			}
+			$('#rightToggleButton').hide();
+			$('#leftToggleButton').show();
+		});
+	</script>
 </body>
 </html>
