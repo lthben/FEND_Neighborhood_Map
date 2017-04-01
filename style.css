@@ -56,6 +56,12 @@ html, body {
 	margin-bottom: 0px;
 }
 
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
 button {
 	/*min size for mobile devices*/
 	min-width: 48px; 

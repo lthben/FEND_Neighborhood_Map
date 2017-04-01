@@ -12,7 +12,7 @@
 		<div id="menu">
 
 			<div id="menubuttonheader">
-				<button id="leftToggleButton">&laquo;</button>
+				<button id="leftToggleButton">&laquo;</button> <!--html character entity-->
 				<button id="rightToggleButton">&raquo;</button>
 			</div>
 
@@ -24,19 +24,11 @@
 
 			<div>
 				<div>
-			
-					<select id="select-cat" data-bind="value: selectedCategory"> <!--click: printSelectedCat for debugging-->
-						<option value="- select a category -">- select a category -</option>
-						<option value="Cultural Entertainment">Cultural Entertainment</option>
-						<option value="Food">Food</option>
-						<option value="Museums">Museums</option>
-						<option value="Night Life">Night Life</option>
-						<option value="Parks">Parks</option>
-						<option value="Shopping">Shopping</option>
+					<select id="select-cat" data-bind="options: categories, optionsCaption: '- select a category -', value: selectedCategory"> <!--click: printSelectedCat for debugging-->
 					</select>
 				</div>
 				<div>			
-					<select id="select-loc" data-bind="options: locationList, value: selectedLocation, attr: {size: selectListSize}"> <!--click: printSelectedLoc, for debugging-->
+					<select id="select-loc" data-bind="options: filteredPlaces, value: selectedLocation, attr: {size: selectListSize}"> <!--click: printSelectedLoc, for debugging-->
 					</select>
 				</div>
 			</div>
@@ -48,8 +40,8 @@
 
 	<script src="js/lib/knockout-3.4.1.js"></script>
 	<script src="js/lib/jquery-3.1.1.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBGgwQyTBh-NZLm0qAuumS9M5K1zU0Qvos&v=3&callback=initMap" async defer onerror="mapError()"></script>
 	<script src="js/app.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBGgwQyTBh-NZLm0qAuumS9M5K1zU0Qvos&v=3&callback=initMap"></script>
 	<script type="text/javascript">
 		$('#rightToggleButton').hide();
 
